@@ -13,7 +13,7 @@ To see it in action run
 
     ./scalac-aspects TraceSymbol.aj -DtraceSymbolIds=500,505 Foo.scala
 
-### Per-file timings
+### Per-file timings (`PerUnitTiming.aj`)
 
 This example shows how to bring back `-Dscala.timings`. See this discussion:
 https://groups.google.com/d/topic/scala-internals/ZCToaWda7tQ/discussion
