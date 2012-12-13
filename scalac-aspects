@@ -3,7 +3,7 @@ if [ ! -d "$ASPECTJ_HOME" ]; then
 	exit 1
 fi
 if [ ! -d "$SCALA_HOME" ]; then
-	echo "ASPECTJ_HOME must be set."
+	echo "SCALA_HOME must be set."
 	exit 1
 fi
 
