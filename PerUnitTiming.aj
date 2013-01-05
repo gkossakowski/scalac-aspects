@@ -2,7 +2,7 @@ import scala.tools.nsc.CompilationUnits.CompilationUnit;
 import java.util.Map;
 import scala.tools.nsc.Global.GlobalPhase;
 
-aspect TraceSymbol {
+aspect PerUnitTiming {
 
   private Map<CompilationUnit, Long> timings = new java.util.HashMap<CompilationUnit, Long>();
 
