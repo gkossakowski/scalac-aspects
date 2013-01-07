@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 #
 
-die () { echo "$@" && exit 1; }
-run () { echo "$@" && "$@"; }
+echoerr () { echo "$@" 1>&2; }
+die () { echoerr "$@" && exit 1; }
+run () { echoerr "$@" && "$@"; }
 mkCp () { ( IFS=: ; echo "$*"; ); }
 
 [[ $# -ge 2 ]] || die "Usage: $(basename $0) <aj file> [source source ...]"
@@ -41,7 +42,7 @@ runAjc () {
     -cp "$AJ_RUNTIME:$SCALA_LIBS" \
     -outxml \
     -outjar "$WORKJAR" \
-    "$AJ_FILE"
+    "$AJ_FILE" 1>&2
 }
 
 runScala () {
