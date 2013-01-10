@@ -22,7 +22,7 @@ To see it in action run
 
     ./scalac-aspects PerUnitTiming.aj Foo.scala
 
-### Type completion timings
+### Type completion timings (`TypeCompletionTiming.aj`)
 
 This example shows how to measure how much time is spent on calculating given
 type. The cool thing about it is that it also shows position in a file where
