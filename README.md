@@ -21,3 +21,17 @@ https://groups.google.com/d/topic/scala-internals/ZCToaWda7tQ/discussion
 To see it in action run
 
     ./scalac-aspects PerUnitTiming.aj Foo.scala
+
+### Type completion timings
+
+This example shows how to measure how much time is spent on calculating given
+type. The cool thing about it is that it also shows position in a file where
+given type is referred.
+
+Too see it in action run
+
+    ./scalac-aspects TypeCompletionTiming.aj Foo.scala
+
+The cool thing is that scalac options work as expected. Try:
+
+    ./scalac-aspects TypeCompletionTiming.aj -Yshow-symkinds Foo.scala
