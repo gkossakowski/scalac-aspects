@@ -35,3 +35,12 @@ Too see it in action run
 The cool thing is that scalac options work as expected. Try:
 
     ./scalac-aspects TypeCompletionTiming.aj -Yshow-symkinds Foo.scala
+
+### Typing timings (`TypingTimings.aj`)
+
+The `TypingTimings.aj` has strictly more functionality (it collects more information)
+than the `TypeCompletionTiming.aj` but it's not an example of the best code.
+
+I include it because it's powerful enough to discover real problem with compilation times.
+I used it for compiling Scala library and I discovered that some types take 0.25s to compute.
+If you are wondering, that'ts _a lot_.
