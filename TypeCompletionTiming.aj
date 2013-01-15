@@ -24,14 +24,12 @@ aspect TypeCompletionTiming {
     public final Symbol sym;
     public final long startTime;
     public final long duration;
-    // Class instance representing a particular class inheriting from LazyType that
-    // generated the trace
-    public final Class lazyTpe;
-    public Trace(Symbol sym, long startTime, long duration, Class lazyTpe) {
+    public final String traceName;
+    public Trace(Symbol sym, long startTime, long duration, String traceName) {
       this.sym = sym;
       this.startTime = startTime;
       this.duration = duration;
-      this.lazyTpe = lazyTpe;
+      this.traceName = traceName;
     }
   }
 
@@ -45,14 +43,14 @@ aspect TypeCompletionTiming {
   void around(LazyType lazyTpe, Symbol sym): call(void Type.complete(..)) && 
     target(lazyTpe) && args(sym) {
     if (!currentlyCompleted.containsKey(lazyTpe)) {
-      Class lazyTpeClass = lazyTpe.getClass();
+      String traceName = lazyTpe.getClass().getSimpleName();
       currentlyCompleted.put(lazyTpe, null);
       long start = System.nanoTime();
       try {
         proceed(lazyTpe, sym);
       } finally {
         long duration = System.nanoTime()-start;
-        Trace trace = new Trace(sym, start, duration, lazyTpeClass);
+        Trace trace = new Trace(sym, start, duration, traceName);
         traces.add(trace);
         currentlyCompleted.remove(lazyTpe);
       }
@@ -71,10 +69,10 @@ aspect TypeCompletionTiming {
       long durationMicro = trace.duration / 1000;
       long startTimeMicro = (trace.startTime-globalStartTime) / 1000;
       final Position pos = trace.sym.pos();
-      final String lazyTpeName = trace.lazyTpe.getSimpleName();
+      final String traceName = trace.traceName;
       // startTime has 10 characters reserved, which gives us max compilation running time 10^-6*10^10 = 10^4 seconds ~ 166 minutes
       // duration has 8 characters reserved, which gives us max duration of type completion to be 10^-6*10^8 = 10^2 seconds
-      buf.append(String.format("%10d\t%8d\t%-16s\t%-80s\t%s\t", startTimeMicro, durationMicro, lazyTpeName,
+      buf.append(String.format("%10d\t%8d\t%-16s\t%-80s\t%s\t", startTimeMicro, durationMicro, traceName,
         trace.sym.fullNameString(), pos.toString()));
       buf.append("\n");
     }
