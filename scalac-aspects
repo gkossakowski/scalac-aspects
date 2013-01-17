@@ -33,7 +33,7 @@ AJ_RUNTIME="$ASPECTJ_HOME/lib/aspectjrt.jar"
 AJ_FILE="$1" && shift
 SCALA_ARGS=( "$@" )
 
-WORKDIR="$(mktemp -dt $(basename $0))"
+WORKDIR="$(mktemp -dt $(basename $0).XXXXXXXXXX)"
 WORKJAR="$WORKDIR/aspects.jar"
 
 runAjc () {
