@@ -52,3 +52,10 @@ Too see it in action run
 Also, check out the little tool I created for post-processing data printed by this tool:
 
 https://gist.github.com/4543164
+
+Maven support
+-------------
+
+François Armand ([@fanf](http://github.com/fanf)) has a blog
+[post](http://blog.normation.com/en/2013/01/29/per-file-compilation-time-in-a-scala-maven-project/)
+showing how to use aspects mentioned above with Maven projects.
