@@ -8,7 +8,7 @@ Exploration of the idea of instrumenting `scalac` with AspectJ. There are two ma
 
 Examples below focus mostly on profiling `scalac`. They help with identifying source files or even single lines causing unusually slow compilation times.
 
-If your code compiles slower than 500-600LoC/s then you might find this tool useful. You can count lines of code in your project with [cloc](http://cloc.sourceforge.net/).
+If your Scala code compiles slower than 500-600LoC/s then you might find this tool useful. You can count lines of code in your project with [cloc](http://cloc.sourceforge.net/).
 
 Examples
 --------
