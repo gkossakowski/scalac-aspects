@@ -1,6 +1,15 @@
 Playground for instrumenting `scalac` using AspectJ.
 ====================================================
 
+Exploration of the idea of instrumenting `scalac` with AspectJ. There are two main use cases for instrumentation of `scalac`:
+  
+  * debugging
+  * profiling
+
+Examples below focus mostly on profiling `scalac`. They help with identifying source files or even single lines causing unusually slow compilation times.
+
+If your code compiles slower than 500-600LoC/s then you might find this tool useful. You can count lines of code in your project with [cloc](http://cloc.sourceforge.net/).
+
 Examples
 --------
 
@@ -59,3 +68,8 @@ Maven support
 François Armand ([@fanf](http://github.com/fanf)) has a blog
 [post](http://blog.normation.com/en/2013/01/29/per-file-compilation-time-in-a-scala-maven-project/)
 showing how to use aspects mentioned above with Maven projects.
+
+Scala versions supported
+------------------------
+
+This project has been tested with Scala 2.10 and 2.11 compilers.
